@@ -95,4 +95,9 @@ export class MainPage {
         });
     }
   }
+
+  async clickOnContactMeButtun () {
+      const contactMeButton = this.heroButtons[1].locator(this.page)
+      await contactMeButton.click();
+  }
 }

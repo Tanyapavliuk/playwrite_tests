@@ -1,4 +1,4 @@
-import{test} from '../fixture/mainPageFixture'
+import{expect, test} from '../fixture/mainPageFixture'
 import { MainPage } from '../models/MainPage'
 
 let mainPage:MainPage
@@ -16,4 +16,12 @@ test.describe('Test for navigation on the main page', () => {
   test('Verification: Of buttons on the Hero section', async ()=>{
     await mainPage.checkHeroButtons()
   });
+
+  test('Check leading to Contact Me Section', async ({page})=> {
+    await mainPage.clickOnContactMeButtun()
+    await expect(page).toHaveURL('https://tetiana-prylepska-qa.vercel.app/#contact')
+    await expect(page.getByRole('heading', { name: 'Contact me' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Contact me' })).toContainText('Contact me')
+  })
+  
 });
